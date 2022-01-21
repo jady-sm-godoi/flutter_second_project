@@ -1,6 +1,6 @@
 # udemy_recipe
 
-A new Flutter project.
+This is my second project on Flutter. The project was proposed in the course: Learn Flutter and Develop Apps For Android and IOS 2021 - A Complete Course to Learn Google Flutter and Dart for Building Native Apps for iOS and Android. This course was created by Leonardo Moura Leitao and Maximilian Schwarzmüller. It is available on Udemy at https://www.udemy.com/course/curso-flutter/
 
 ## Getting Started
 
