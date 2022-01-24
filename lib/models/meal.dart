@@ -48,4 +48,30 @@ class Meal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container();
   }
+
+  String get complexityText {
+    switch (complexity!) {
+      case Complexity.Simple:
+        return 'simple';
+      case Complexity.Medium:
+        return 'normal';
+      case Complexity.Difficult:
+        return ' difícil';
+      default:
+        return 'desconhecido';
+    }
+  }
+
+  String get costText {
+    switch (cost) {
+      case Cost.Cheap:
+        return 'barato';
+      case Cost.Fair:
+        return 'justo';
+      case Cost.Expensive:
+        return 'caro';
+      default:
+        return 'desconhecido';
+    }
+  }
 }
