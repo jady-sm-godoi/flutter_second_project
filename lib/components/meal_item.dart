@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:udemy_recipe/utils/app_routes.dart';
 import '../models/meal.dart';
 
 class MealItem extends StatelessWidget {
   final Meal meal;
-  void _selectMeal() {}
+  void _selectMeal(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      AppRoutes.MEAL_DETAIL,
+      arguments: meal,
+    );
+  }
 
   const MealItem({Key? key, required this.meal}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: _selectMeal,
+      onTap: () => _selectMeal(context),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         elevation: 4,
