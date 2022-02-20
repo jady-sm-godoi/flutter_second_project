@@ -5,10 +5,17 @@ import '../models/meal.dart';
 class MealItem extends StatelessWidget {
   final Meal meal;
   void _selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(
-      AppRoutes.MEAL_DETAIL,
-      arguments: meal,
-    );
+    Navigator.of(context)
+        .pushNamed(
+          AppRoutes.MEAL_DETAIL,
+          arguments: meal,
+        )
+        .then((result) => {
+              if (result == null)
+                {print('Não houve retorno de resultado.')}
+              else
+                {print('O retorno foi: $result.')}
+            });
   }
 
   const MealItem({Key? key, required this.meal}) : super(key: key);

@@ -32,61 +32,65 @@ class MealDetailScreen extends StatelessWidget {
     final meal = ModalRoute.of(context)!.settings.arguments as Meal;
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text(meal.title!),
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 300,
-                width: double.infinity,
-                child: Image.network(
-                  meal.imageUrl!,
-                  fit: BoxFit.cover,
-                ),
+      appBar: AppBar(
+        title: Text(meal.title!),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              width: double.infinity,
+              child: Image.network(
+                meal.imageUrl!,
+                fit: BoxFit.cover,
               ),
-              _createSectionTitle(context, 'Ingredientes'),
-              _createSectionContainer(
-                ListView.builder(
-                    itemCount: meal.ingredients!.length,
-                    itemBuilder: (item, index) {
-                      return Card(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 5,
-                            horizontal: 10,
-                          ),
-                          child: Text(meal.ingredients![index]),
+            ),
+            _createSectionTitle(context, 'Ingredientes'),
+            _createSectionContainer(
+              ListView.builder(
+                  itemCount: meal.ingredients!.length,
+                  itemBuilder: (item, index) {
+                    return Card(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 5,
+                          horizontal: 10,
                         ),
-                        color: Theme.of(context).colorScheme.secondary,
-                      );
-                    }),
-              ),
-              _createSectionTitle(context, 'Passos'),
-              _createSectionContainer(ListView.builder(
-                itemCount: meal.steps?.length,
-                itemBuilder: (ctx, index) {
-                  return Column(
-                    children: [
-                      ListTile(
-                        leading: CircleAvatar(
-                          child: Text(
-                            '${index + 1}',
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                          backgroundColor:
-                              Theme.of(context).colorScheme.primary,
-                        ),
-                        title: Text(meal.steps![index]),
+                        child: Text(meal.ingredients![index]),
                       ),
-                      const Divider()
-                    ],
-                  );
-                },
-              ))
-            ],
-          ),
-        ));
+                      color: Theme.of(context).colorScheme.secondary,
+                    );
+                  }),
+            ),
+            _createSectionTitle(context, 'Passos'),
+            _createSectionContainer(ListView.builder(
+              itemCount: meal.steps?.length,
+              itemBuilder: (ctx, index) {
+                return Column(
+                  children: [
+                    ListTile(
+                      leading: CircleAvatar(
+                        child: Text(
+                          '${index + 1}',
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                      ),
+                      title: Text(meal.steps![index]),
+                    ),
+                    const Divider()
+                  ],
+                );
+              },
+            ))
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.favorite),
+        onPressed: () => Navigator.of(context).pop(meal.title),
+      ),
+    );
   }
 }
